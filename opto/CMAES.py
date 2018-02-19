@@ -6,7 +6,7 @@ from builtins import range
 import cma
 import numpy as np
 from dotmap import DotMap
-from R.opto.classes.Optimizer import Optimizer
+from opto.opto.classes.Optimizer import Optimizer
 import os
 
 

@@ -5,7 +5,7 @@ from builtins import range
 
 import numpy as np
 import time
-import jsocket
+# import jsocket
 import os
 
 import matplotlib as mpl
@@ -13,9 +13,9 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import cm
 
 # ---
-import R.data as rdata
-import R.log as rlog
-import R.utils as rutils
+import opto.data as rdata
+import opto.log as rlog
+import opto.utils as rutils
 import scipyplot as spp
 # from R.regression.stats import stats
 

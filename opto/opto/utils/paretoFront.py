@@ -4,7 +4,7 @@ from builtins import range
 # ----------------------------------------------------------------------------------------------------------------------
 
 import numpy as np
-import R.log as log
+import opto.log as log
 from timeit import default_timer as timer
 
 import logging

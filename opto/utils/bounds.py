@@ -4,7 +4,7 @@ from builtins import range
 # ----------------------------------------------------------------------------------------------------------------------
 
 import numpy as np
-from R.utils.linearTransformation import linearTransformation
+from opto.utils.linearTransformation import linearTransformation
 
 
 class bounds(object):

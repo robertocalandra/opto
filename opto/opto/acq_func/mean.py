@@ -6,7 +6,7 @@ from builtins import range
 import numpy as np
 from dotmap import DotMap
 import matplotlib.pyplot as plt
-from R.opto.classes.AcquisitionFunction import AcquisitionFunction
+from opto.opto.classes.AcquisitionFunction import AcquisitionFunction
 
 
 class mean(AcquisitionFunction):
