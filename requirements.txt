@@ -1,0 +1,12 @@
+numpy >= 1.11  # Matrices and math
+matplotlib >= 1.5  # Plot stuff
+future >= 0.15.2 # Compatibility for python 2/3
+scipy >= 0.18
+colorama >= 0.3.7
+scipyplot >= 0.0.1
+dotmap  >= 1.2.8  # To use dict with dot access
+%jsocket
+
+GPy >= 1.6.1  # Gaussian Processes
+direct  # DIRECT
+cma  # CMA-ES
