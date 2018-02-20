@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import h5py
 # import R.log as log
-import R.utils as rutils
+import opto.utils as rutils
 import copy
 from numbers import Number
 

@@ -7,8 +7,8 @@ import numpy as np
 from dotmap import DotMap
 import matplotlib.pyplot as plt
 import scipyplot as spp
-from R.opto.utils.bestof import bestof
-import R.data as rdata
+from opto.opto.utils.bestof import bestof
+import opto.data as rdata
 
 import logging
 logger = logging.getLogger(__name__)

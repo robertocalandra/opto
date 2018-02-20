@@ -5,7 +5,7 @@ scipy >= 0.18
 colorama >= 0.3.7
 scipyplot >= 0.0.1
 dotmap  >= 1.2.8  # To use dict with dot access
-%jsocket
+h5py
 
 GPy >= 1.6.1  # Gaussian Processes
 direct  # DIRECT

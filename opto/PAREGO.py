@@ -5,8 +5,8 @@ from builtins import range
 
 import numpy as np
 from dotmap import DotMap
-from R.opto.classes.Optimizer import Optimizer
-from R.opto.utils.paretoFront import paretoFront
+from opto.opto.classes.Optimizer import Optimizer
+from opto.opto.utils.paretoFront import paretoFront
 import sys
 import os
 import opto.regression as rregression

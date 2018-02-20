@@ -3,7 +3,7 @@ from __future__ import division, print_function, absolute_import
 from builtins import range
 # ----------------------------------------------------------------------------------------------------------------------
 
-from R.opto.utils.paretoFront import paretoFront
+from opto.opto.utils.paretoFront import paretoFront
 import numpy as np
 
 

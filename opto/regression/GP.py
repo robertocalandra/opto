@@ -3,7 +3,7 @@ from __future__ import division, print_function, absolute_import
 from builtins import range
 # ----------------------------------------------------------------------------------------------------------------------
 
-from R.regression.classes.model import model
+from opto.regression.classes.model import model
 import GPy
 from dotmap import DotMap
 import matplotlib.pyplot as plt
