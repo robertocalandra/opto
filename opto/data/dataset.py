@@ -5,6 +5,7 @@ Created on Thu Feb 19 18:48:31 2015
 @author: Roberto Calandra
 """
 from __future__ import division, print_function, absolute_import
+from past.builtins import basestring
 from builtins import range
 
 import numpy as np

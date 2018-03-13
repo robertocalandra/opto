@@ -1,5 +1,6 @@
 # Compatibility Python 2/3
 from __future__ import division, print_function, absolute_import
+from past.builtins import basestring
 from builtins import range
 # ----------------------------------------------------------------------------------------------------------------------
 
