@@ -183,3 +183,30 @@ def paretoFront(objectives, parameters=None, func='minimize'):
         PF_PAR = parameters[:, idx_PF]
         assert PF_PAR.shape[0] == nPars, 'Inconsistent size PF'
         return PF, PF_PAR
+
+
+def paretoFrontIdx(objectives, parameters=None, func='minimize'):
+    """ Compute idx of the Pareto Front
+
+    :param objectives: [N_OBJECTIVES, N_POINTS]
+    :param parameters: [N_PARAMETERS, N_POINTS]
+    :param func: if func is a single string, it will be considered as the same value for all objectives.
+    Alternatively, it is possible to present a list (currently not implemented).
+    :return:
+        PF [N_OBJECTIVES, N_POINTS]
+        PF_par [N_PARAMETERS, N_POINTS]
+    """
+    nObj = objectives.shape[0]
+    if parameters is not None:
+        nPars = parameters.shape[0]
+        assert objectives.shape[1] == parameters.shape[1], 'Inconsistent size objectives - parameters'
+
+    assert isinstance(func, basestring), 'currently only single values are accepted'  # TODO: allow multiple values
+    if isinstance(func, basestring):
+        func = [func] * nObj
+
+    _startTime = timer()
+    logging.info('Computing PF')
+
+    idx_PF = is_pareto_optimal_1b(objectives, minimize=True)
+    return idx_PF
