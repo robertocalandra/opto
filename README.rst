@@ -7,9 +7,9 @@ Opto the optimizer
      :width: 100px
      
 This package offer a flexible framework to implement optimizers for Python.
-Moreover, some standard algorithms are currently implemented::
+Moreover, some standard algorithms are currently implemented:
 
-* Bayesian optimization
+- Bayesian optimization
 
 To have more details about the features available on the package have a look at the examples.
 
@@ -31,6 +31,6 @@ Note: the DIRECT algorithm currently is just an interface to a FORTRAN implement
 ============
 Publications
 ============
-The following publications make use of Opto::
+The following publications make use of Opto:
 
 - Yang, B.; Wang, G.; Calandra, R.; Contreras, D.; Levine, S. & Pister, K. Learning Flexible and Reusable Locomotion Primitives for a Microrobot IEEE Robotics and Automation Letters (RA-L), 2018

@@ -8,12 +8,12 @@ import numpy as np
 from dotmap import DotMap
 import opto.regression as rregression
 import opto.data as rdata
-from opto.CMAES import CMAES
+from opto.opto.CMAES import CMAES
 from opto.opto.classes.OptTask import OptTask
 from opto.opto.classes.StopCriteria import StopCriteria
 from opto.opto.acq_func import *
-import opto.utils as rutils
-from .opto.classes.IterativeOptimizer import IterativeOptimizer
+import R.utils as rutils
+from .classes.IterativeOptimizer import IterativeOptimizer
 import matplotlib.pyplot as plt
 import scipyplot as spp
 
@@ -132,9 +132,11 @@ class BO(IterativeOptimizer):
     def f_visualize(self):
         # TODO: plot also model (see plot_optimization_curve)
         if self._iter == 0:
+            self._fig = plt.figure()
             self._objectives_curve, = plt.plot(self.get_logs().get_objectives().T, linewidth=2, color='blue')
             # self._objectives_curve, = plt.plot(self.get_logs().get_objectives().T, linewidth=2, color='red')
             plt.ylabel('Obj.Func.')
+            plt.xlabel('N. Evaluations')
         else:
             self._objectives_curve.set_data(np.arange(self.get_logs().get_n_evals()),
                                             self.get_logs().get_objectives().T)
@@ -166,7 +168,7 @@ class BO(IterativeOptimizer):
             if self.log_best_mean:
                 spp.gauss_1D(y=logs.data.best_m-self.task.opt_obj, variance=logs.data.best_v, x=x, color='green')
 
-        plt.xlabel('Evaluations')
+        plt.xlabel('N. Evaluations')
         if scale == 'log':
             ax = plt.gca()
             ax.set_yscale('log')
