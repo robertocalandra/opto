@@ -23,7 +23,7 @@ def save(data, fileName, verbosity=1, indent=0):
     # fileName = m.group(0) + '.pkl'  # Add .pkl
     rlog.cnd_msg(verbosity, 0, 'Saving pickle file: ' + fileName, indent_depth=indent)
     try:
-        f = open(fileName, 'w')
+        f = open(fileName, 'wb')
         f.write(pickle.dumps(data))
         f.close()
         status = 0

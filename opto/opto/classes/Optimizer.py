@@ -38,9 +38,12 @@ class Optimizer(object):
         self.order = 0  # Order of the Optimizer
         self.MOO = False  # Single or multi-objective optimizer?
 
+        # Structure that keep the Logs of the optimization process and related events
         self.store_full_x = True
+        self.store_full_fx = True
+        self.store_full_gx = parameters.get('store_full_gx', False)
         self._startTime = None
-        self._logs = Logs(store_x=self.store_full_x)  # Structure that keep the Logs of the optimization process and related events
+        self._logs = Logs(store_x=self.store_full_x, store_fx=self.store_full_fx, store_gx=self.store_full_gx)
 
     def optimize(self):
         """
@@ -79,9 +82,9 @@ class Optimizer(object):
         def update_best():
             if self.task.isSOO():
                 if self.task.task == {'minimize'}:
-                    idx = np.argmin(self.task.get_n_objectives())
+                    idx = np.argmin(self._logs.get_objectives())
                 else:
-                    idx = np.argmax(self.task.get_n_objectives())
+                    idx = np.argmax(self._logs.get_objectives())
                 self._logs.data.opt_fx = self._logs.get_objectives()[0, idx]
                 self._logs.data.opt_x = self._logs.get_parameters()[:, idx]
             else:
@@ -95,12 +98,12 @@ class Optimizer(object):
             return fx
         if self.order == 1:
             fx, gx = self.task.evaluate(x, order=1)
-            self._logs.add_evals(x=x.T, fx=fx, time=self.stopCriteria.get_time())  # store logs
+            self._logs.add_evals(x=x.T, fx=fx, gx=gx, time=self.stopCriteria.get_time())  # store logs
             update_best()
             return fx, gx
         if self.order == 2:
             fx, gx, hx = self.task.evaluate(x, order=2)
-            self._logs.add_evals(x=x.T, fx=fx, time=self.stopCriteria.get_time())  # store logs
+            self._logs.add_evals(x=x.T, fx=fx, gx=gx, time=self.stopCriteria.get_time())  # store logs
             update_best()
             return fx, gx, hx
 
