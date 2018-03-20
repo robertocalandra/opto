@@ -9,7 +9,8 @@ install_requires = [
     'future',
     'scipy',
     'colorama',
-    'h5py'
+    'h5py',
+    'cma'
 ]
 
 dependency_links = [
@@ -21,7 +22,7 @@ def read(fname):
 
 
 setup(name='opto',
-      version='0.1',
+      version='0.1.1',
       description='A Python Toolbox for Optimization',
       url='https://github.com/robertocalandra/opto',
       author='Roberto Calandra',

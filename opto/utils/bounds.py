@@ -44,7 +44,7 @@ class bounds(object):
             return self.min
         else:
             assert np.all(idx < self.n_dim), 'invalid idx'
-            if self.n_dim == 1:  # This is necessary because of the inconstistent behavior of numpy
+            if self.n_dim == 1:  # This is necessary because of the inconsistent behavior of numpy
                 return self.min
             else:
                 return self.min[idx]
@@ -59,7 +59,7 @@ class bounds(object):
             return self.max
         else:
             assert np.all(idx < self.n_dim), 'invalid idx'
-            if self.n_dim == 1:  # This is necessary because of the inconstistent behavior of numpy
+            if self.n_dim == 1:  # This is necessary because of the inconsistent behavior of numpy
                 return self.max
             else:
                 return self.max[idx]
@@ -79,14 +79,17 @@ class bounds(object):
             # TODO implement me
             pass
 
-    def to_list(self, idx=None):
+    def to_list(self, idx=None, listlist=False, transpose=False):
         """
         export the bounds to a list formatted as
-        [[min_1, min_2 ... min_n][max_1, max_2, ... max_n]]
+        [np.array([min_1, min_2 ... min_n]), np.array([max_1, max_2, ... max_n])]
         :param idx: 
         :return: 
         """
-        return [self.get_min(idx=idx), self.get_max(idx=idx)]
+        if listlist:
+            return [self.get_min(idx=idx).tolist(), self.get_max(idx=idx).tolist()]
+        else:
+            return [self.get_min(idx=idx), self.get_max(idx=idx)]
 
     def to_scipy(self, idx=None):
         """
@@ -145,6 +148,14 @@ class bounds(object):
         return self.get_min() + (self.get_max() - self.get_min()) * np.random.rand(*n)
         # TODO: make code more robust by considering self.n_dim explicitly
 
+    def sample_grid(self, bin):
+        D = self.get_n_dim()
+        resolution = int(bin) * np.ones(D)  # TODO: accept resolution
+        n_evals = np.prod(resolution, dtype='int')
+        result = np.mgrid[[slice(self.get_min(i), self.get_max(i), resolution[i]*1j) for i in range(D)]]
+        out = result.reshape(D, n_evals).T
+        return out
+
     def isWithinBounds(self, data):
         """
 
@@ -198,9 +209,10 @@ class bounds(object):
         :param idx:
         :return:
         """
+        # TODO: test me!
         idx = np.array(idx)
         subset_min = self.get_min(idx)
-        subset_max = self.get_max()
+        subset_max = self.get_max(idx)
         subset = bounds(min=subset_min, max=subset_max)
         return subset
 
@@ -208,4 +220,4 @@ class bounds(object):
 #     min = [-1, -2, -3]
 #     max = [1, 2, 3]
 #     a = bounds(min=min, max=max)
-#     out = a.get_corner_points()
+#     out = a.sample_grid(5)
