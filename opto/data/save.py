@@ -45,7 +45,7 @@ def load(fileName, verbosity=1, indent=0):
     # fileName +=  '.pkl'
     rlog.cnd_msg(verbosity, 0, 'Load pickle file: ' + fileName, indent_depth=indent)
     try:
-        f = open(fileName, 'r')
+        f = open(fileName, 'rb')
         dataPickle = f.read()
         f.close()
         out = pickle.loads(dataPickle)
