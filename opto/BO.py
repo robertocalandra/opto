@@ -13,7 +13,7 @@ from opto.opto.classes.OptTask import OptTask
 from opto.opto.classes.StopCriteria import StopCriteria
 from opto.opto.acq_func import *
 import opto.utils as rutils
-from .classes.IterativeOptimizer import IterativeOptimizer
+from opto.opto.classes.IterativeOptimizer import IterativeOptimizer
 import matplotlib.pyplot as plt
 import scipyplot as spp
 
