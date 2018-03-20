@@ -8,7 +8,8 @@ install_requires = [
     'matplotlib',
     'future',
     'scipy',
-    'colorama'
+    'colorama',
+    'h5py'
 ]
 
 dependency_links = [

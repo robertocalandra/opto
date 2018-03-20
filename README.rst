@@ -22,6 +22,7 @@ To install the package clone the repository, and manually install the package us
 
 	git clone https://github.com/robertocalandra/opto.git 
 	cd opto
+	pip install -r requirements.txt
 	python setup.py install
 	
 Note: the DIRECT algorithm currently is just an interface to a FORTRAN implementation of DIRECT. For this reason it is necessary to install a FORTRAN compiler using::
