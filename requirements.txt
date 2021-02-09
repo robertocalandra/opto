@@ -7,6 +7,8 @@ scipyplot >= 0.0.1
 dotmap  >= 1.2.8  # To use dict with dot access
 h5py
 
-GPy >= 1.6.1  # Gaussian Processes
+# GPy >= 1.6.1
 direct  # DIRECT
 cma  # CMA-ES
+torch
+gpytorch   # Gaussian Processes

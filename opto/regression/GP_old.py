@@ -23,7 +23,7 @@ class GP(model):
         self.indent = parameters.get('indent', 0)
         self.n_inputs = None
         self.n_outputs = None
-        self.kernel = parameters.get('kernel', 'Matern52')
+        self.kernel = parameters.get('kernel', 'RBF')
         self.ARD = parameters.get('ARD', True)
         self.fixNoise = parameters.get('fixNoise', None)
 
@@ -50,6 +50,8 @@ class GP(model):
                 self._kernel.append(GPy.kern.Matern52(input_dim=train_set.get_dim_input(), ARD=self.ARD))
             if self.kernel == 'Linear':
                 self._kernel.append(GPy.kern.Linear(input_dim=train_set.get_dim_input(), ARD=self.ARD))
+            if self.kernel == 'RBF':
+                self._kernel.append(GPy.kern.RBF(input_dim=train_set.get_dim_input(), ARD=self.ARD))
             self._model.append(GPy.models.GPRegression(train_set.get_input().T, train_set.get_output()[i, :].T, kernel=self._kernel[i]))
             if self.fixNoise is not None:
                 self._model[i].likelihood.variance.fix(self.fixNoise)

@@ -22,7 +22,7 @@ def read(fname):
 
 
 setup(name='opto',
-      version='0.1.1',
+      version='0.2',
       description='A Python Toolbox for Optimization',
       url='https://github.com/robertocalandra/opto',
       author='Roberto Calandra',

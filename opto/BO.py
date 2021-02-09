@@ -58,10 +58,19 @@ class BO(IterativeOptimizer):
             self._logs.data.model = [None]
             return self.task.get_bounds().sample_uniform((self.n_initial_evals, self.task.get_n_parameters()))
         else:
-            # TODO: use past_evals
             # Create model
+            if (self._iter == 0) and (self.past_evals is not None):
+                if self.task.task == {'minimize'}:
+                    idx = np.argmin(self.past_evals[1])
+                    self._logs.add_evals(x=self.past_evals[0], fx=self.past_evals[1], nIter=-1,
+                                         opt_x=self.past_evals[0][:,idx], opt_fx=self.past_evals[1][:,idx])
+                else:
+                    idx = np.argmax(self.past_evals[1])
+                    self._logs.add_evals(x=self.past_evals[0], fx=self.past_evals[1], nIter=-1,
+                                             opt_x=self.past_evals[0][:, idx], opt_fx=self.past_evals[1][:, idx])
             logging.info('Fitting response surface')
             dataset = rdata.dataset(data_input=self._logs.get_parameters(), data_output=self._logs.get_objectives())
+
             # print(dataset)
             p = DotMap()
             p.verbosity = 0

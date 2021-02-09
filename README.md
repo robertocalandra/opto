@@ -1,7 +1,4 @@
-
-
-Opto the optimizer
-=========
+# Opto the optimizer
 
 .. image:: https://github.com/robertocalandra/opto/blob/master/logo.png
      :width: 100px
@@ -15,23 +12,24 @@ To have more details about the features available on the package have a look at 
 
 
 
-============
-Installation
-============
+## Installation
+
 To install the package clone the repository, and manually install the package using::
 
-	git clone https://github.com/robertocalandra/opto.git 
-	cd opto
-	pip install -r requirements.txt
-	python setup.py install
+```bash
+git clone https://github.com/robertocalandra/opto.git 
+cd opto
+pip install -r requirements.txt
+python setup.py install
+```
 	
 Note: the DIRECT algorithm currently is just an interface to a FORTRAN implementation of DIRECT. For this reason it is necessary to install a FORTRAN compiler using::
- 
-    sudo apt-get install gfortran
 
-============
-Publications
-============
+```bash 
+sudo apt-get install gfortran
+```
+## Publications
+
 The following publications make use of Opto:
 
-- Yang, B.; Wang, G.; Calandra, R.; Contreras, D.; Levine, S. & Pister, K. Learning Flexible and Reusable Locomotion Primitives for a Microrobot IEEE Robotics and Automation Letters (RA-L), 2018
+- Yang, B.; Wang, G.; Calandra, R.; Contreras, D.; Levine, S. & Pister, K. [Learning Flexible and Reusable Locomotion Primitives for a Microrobot](https://arxiv.org/abs/1803.00196) IEEE Robotics and Automation Letters (RA-L), 2018
